@@ -56,6 +56,30 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
-
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>dev</id>
+            <properties>
+                <spring.cloud.config.server.git.uri>https://github.com/wangqianwei/springconfig.git
+                </spring.cloud.config.server.git.uri>
+            </properties>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <spring.cloud.config.server.git.uri>https://github.com/wangqianwei/springconfig.git
+                </spring.cloud.config.server.git.uri>
+            </properties>
+        </profile>
+    </profiles>
 </project>
